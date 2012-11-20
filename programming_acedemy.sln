@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "calculator", "calculator\ca
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rectangles", "rectangles\rectangles.vcxproj", "{2C1DDBE7-2BCF-4631-A68B-E378396FB0DE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addressbook", "addressbook\addressbook.vcxproj", "{928DAA7E-CCCD-4448-9CC5-449FB2F6270A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{2C1DDBE7-2BCF-4631-A68B-E378396FB0DE}.Debug|Win32.Build.0 = Debug|Win32
 		{2C1DDBE7-2BCF-4631-A68B-E378396FB0DE}.Release|Win32.ActiveCfg = Release|Win32
 		{2C1DDBE7-2BCF-4631-A68B-E378396FB0DE}.Release|Win32.Build.0 = Release|Win32
+		{928DAA7E-CCCD-4448-9CC5-449FB2F6270A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{928DAA7E-CCCD-4448-9CC5-449FB2F6270A}.Debug|Win32.Build.0 = Debug|Win32
+		{928DAA7E-CCCD-4448-9CC5-449FB2F6270A}.Release|Win32.ActiveCfg = Release|Win32
+		{928DAA7E-CCCD-4448-9CC5-449FB2F6270A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
