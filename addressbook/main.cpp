@@ -5,11 +5,13 @@
 
 int main() {
 	printGreetings();
-
+	char* phone = abio_getPhone();
+	/*
 	Profile* profile = requestProfile();
 	if (profile == NULL) {
 		exitBook();
 	}
+	*/
 
 	return 0;
 }

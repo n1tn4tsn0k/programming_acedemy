@@ -1,7 +1,7 @@
 
 #pragma once
 
-enum RecordType { ADDRESS, MOBILE_PHONE, HOME_PHONE, OFFICE_PHONE, FAX, HOMEPAGE };
+enum RecordType { ADDRESS, MOBILE_PHONE, HOME_PHONE, OFFICE_PHONE, FAX, EMAIL, HOMEPAGE };
 
 typedef struct {
 	RecordType type;
