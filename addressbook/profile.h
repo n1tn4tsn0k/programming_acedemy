@@ -22,3 +22,5 @@ typedef struct {
 } Profile;
 
 Profile* requestProfile();
+int loadProfileCount();
+void loadProfileNames(char** profileNames);

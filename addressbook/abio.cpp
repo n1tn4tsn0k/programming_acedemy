@@ -2,59 +2,87 @@
 #include <cstdio>
 #include <cstring>
 #include <conio.h>
+#include <cstdarg>
 #include "recode.h"
 
-void abio_print(char* str) {
-	char* str866 = (char*) malloc(strlen(str)+1);
-	recode1251to866(str, str866);
-	printf(str866);
+int abio_printf(char* fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+	char* str866 = (char*) malloc(strlen(fmt)+1);
+	recode1251to866(fmt, str866);
+	int retval = vprintf(str866, ap);
 	free(str866);
+	va_end(ap);
+	return retval;
 }
 
-char* abio_getString() {
+int abio_getString(char* str) {
 	char str866[256];
 	scanf("%s", str866);
-	char* str = (char*) malloc(strlen(str866)+1);
-	recode866to1251(str866, str);
-	return str;
+	return recode866to1251(str866, str);
 }
 
-char* abio_getPhone() {
-	// NEED TO USE FROM NEW LINE
-	char buf[128];
-	buf[0] = 0;
+int abio_getMobilePhone(char* str) {
+	// NEED TO USE FROM A NEW LINE
+	int len = 0;
 	bool done = false;
 	while (!done) {
-		int len = strlen(buf);
 		printf("\r");
 		for (int i = 0; i < 25; ++i) {
 			printf(" ");
 		}
-		printf("\r+");
+		printf("\r+7 (");
 		for (int i = 0; i < len; ++i) {
-			if (i == 1) {
-				printf(" (");
-			} else if (i == 4) {
+			putch(str[i]);
+			if (i == 2) {
 				printf(") ");
-			} else if (i == 7) {
+			} else if (i == 5) {
 				printf(" ");
+			} else if (i == 9) {
+				printf(" (Enter)");
 			}
-			putch(buf[i]);
-		}
-		if (len == 11) {
-			printf(" (Enter)");
 		}
 		char c = getch();
-		if (c >= '0' && c <= '9' && len < 11) {
-			buf[len++] = c;
-			buf[len] = 0;
-		} else if (c == 8) {
-			buf[--len] = 0;
-		} else if (c == '\r' && len == 11) {
+		if (c >= '0' && c <= '9' && len < 10) {
+			str[len++] = c;
+		} else if (c == 8 && len > 0) {
+			--len;
+		} else if (c == '\r' && len == 10) {
 			done = true;
 		}
 	}
 	printf("\n");
-	return strdup(buf);
+	str[len] = 0;
+	return len;
 }
-			
+
+int abio_getPhone(char* str) {
+	int len = 0;
+	bool done = false;
+	while (!done) {
+		printf("\r");
+		if (len > 0) {
+			for (int i = 0; i < 12; i++) {
+				printf(" ");
+			}
+			printf(" (Enter)");
+		} else {
+			for (int i = 0; i < 20; i++) {
+				printf(" ");
+			}
+		}
+		str[len] = 0;
+		printf("\r%s", str);
+		char c = getch();
+		if (c >= '0' && c <= '9' && len < 12) {
+			str[len++] = c;
+		} else if (c == 8 && len > 0) {
+			--len;
+		} else if (c == '\r' && len > 0) {
+			done = true;
+		}
+	}
+	printf("\n");
+	str[len] = 0;
+	return len;
+}
